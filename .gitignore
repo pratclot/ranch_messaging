@@ -1,0 +1,6 @@
+firebase.json
+node_modules
+.idea
+ranch_messaging.iml
+.env
+logs
