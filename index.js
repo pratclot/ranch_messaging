@@ -53,7 +53,7 @@ function setupLogger() {
     require('winston-daily-rotate-file');
 
     const myFormat = printf(({message, timestamp}) => {
-        return `${timestamp}: ${message}`;
+        return `${timestamp}: ${message.replace(/\n/g, `\n  ${' '.repeat(timestamp.length)}`)}`;
     });
 
     var transport = new winston.transports.DailyRotateFile({
@@ -62,7 +62,8 @@ function setupLogger() {
         zippedArchive: true,
         maxSize: '20m',
         maxFiles: '14d',
-        dirname: 'logs'
+        dirname: 'logs',
+        eol: '\n'
     });
     var logger = winston.createLogger({
         transports: [
