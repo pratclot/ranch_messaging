@@ -12,6 +12,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "firebase-admin": "^8.13.0",
+    "moment": "^2.27.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0",
     "ws": "^7.3.1"

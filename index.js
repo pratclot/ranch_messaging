@@ -10,6 +10,7 @@ admin.initializeApp({
     databaseURL: process.env.FIREBASE_DB_URL
 });
 
+const moment = require('moment');
 const winston = require('winston');
 const {combine, timestamp, printf, json} = winston.format;
 
@@ -52,7 +53,8 @@ function setupWs() {
 function setupLogger() {
     require('winston-daily-rotate-file');
 
-    const myFormat = printf(({message, timestamp}) => {
+    const myFormat = printf(({message}) => {
+        const timestamp = moment().toISOString(true);
         return `${timestamp}: ${message.replace(/\n/g, `\n  ${' '.repeat(timestamp.length)}`)}`;
     });
 
